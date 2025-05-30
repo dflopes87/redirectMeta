@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 const VERIFY_TOKEN = "lindaFruta";
 const POWER_AUTOMATE_URL = "https://prod-18.brazilsouth.logic.azure.com:443/workflows/8b790b85559546959f170cd3a8d5ab14/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=v5-kCqk3msfp4hwirmvPHbxJpJgkC2XpooJDsWYldGE";
