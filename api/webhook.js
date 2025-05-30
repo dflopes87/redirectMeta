@@ -1,0 +1,30 @@
+const axios = require("axios");
+
+const VERIFY_TOKEN = "lindaFruta"; // MESMO TOKEN QUE VOCÊ COLOCOU NA META
+const POWER_AUTOMATE_URL = "https://prod-18.brazilsouth.logic.azure.com:443/workflows/8b790b85559546959f170cd3a8d5ab14/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=v5-kCqk3msfp4hwirmvPHbxJpJgkC2XpooJDsWYldGE";
+
+export default async function handler(req, res) {
+  if (req.method === "GET") {
+    const mode = req.query["hub.mode"];
+    const token = req.query["hub.verify_token"];
+    const challenge = req.query["hub.challenge"];
+
+    if (mode === "subscribe" && token === VERIFY_TOKEN) {
+      return res.status(200).send(challenge);
+    } else {
+      return res.status(403).send("Token inválido");
+    }
+  }
+
+  if (req.method === "POST") {
+    try {
+      await axios.post(POWER_AUTOMATE_URL, req.body);
+      return res.status(200).send("OK");
+    } catch (error) {
+      console.error("Erro ao encaminhar para Power Automate:", error.message);
+      return res.status(500).send("Erro ao encaminhar");
+    }
+  }
+
+  res.status(405).send("Método não permitido");
+}
