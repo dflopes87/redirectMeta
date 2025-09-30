@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const VERIFY_TOKEN = "lindaFruta";
-const POWER_AUTOMATE_URL = "https://prod-18.brazilsouth.logic.azure.com:443/workflows/8b790b85559546959f170cd3a8d5ab14/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=v5-kCqk3msfp4hwirmvPHbxJpJgkC2XpooJDsWYldGE";
+const POWER_AUTOMATE_URL = "https://default6fcf4bf61ec64b2f98851cc7158ad9.1c.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ae4a9abc902f43edb753fe43827fe002/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=jKn0G4Im17zuY7HAZ1WnsVOAstfKsYHoeC7rajgUgn0";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
